@@ -1,11 +1,3 @@
----
-title: "Alexandra M. Torres – Resume"
-layout: default
----
-
-
-
-
 # **Alexandra M. Torres**
 Chicago, IL  
 **Phone:** (312) 555-0194  
