@@ -1,7 +1,9 @@
 ---
-layout: resume
-title: Alexandra M. Torres
+layout: page
+title: "Alexandra M. Torres – Resume"
+hide_title: true
 ---
+
 
 # **Alexandra M. Torres**
 Chicago, IL  
