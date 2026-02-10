@@ -1,5 +1,6 @@
 ---
-layout: page
+layout: resume
+title: Alexandra M. Torres
 ---
 
 # **Alexandra M. Torres**
