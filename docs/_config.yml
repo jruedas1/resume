@@ -1,4 +1,2 @@
-theme: minima
+theme: jekyll-theme-cayman
 title: ""
-minima:
-  skin: solarized
