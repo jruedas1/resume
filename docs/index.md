@@ -1,6 +1,5 @@
 ---
 layout: page
-title: "Alexandra M. Torres – Resume"
 hide_title: true
 ---
 
