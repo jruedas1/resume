@@ -1,5 +1,5 @@
 ---
-title: "Alexandra M. Torres – Resume"
+layout: page
 ---
 
 # **Alexandra M. Torres**
