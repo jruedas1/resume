@@ -1,6 +1,7 @@
 
 ---
 title: "Alexandra M. Torres – Resume"
+layout: default
 ---
 
 
