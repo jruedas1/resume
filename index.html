@@ -4,148 +4,318 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Alexandra M. Torres – Resume</title>
-
 <style>
-  body {
-    font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #000;
-    background: #fff;
-    line-height: 1.45;
+  /* -----------------------------
+     Theme
+  ------------------------------*/
+  :root{
+    --accent: #1f3a93;           /* deep professional blue */
+    --accent-2: #6b7a99;         /* muted slate for subheads/labels */
+    --ink: #121212;              /* body text */
+    --muted: #4a4a4a;            /* secondary text */
+    --bg: #ffffff;               /* page background */
+    --sidebar-bg: #f7f9fc;       /* subtle tinted sidebar panel */
+    --rule: #d6deff;             /* light accent rule */
   }
-  .page {
-    max-width: 800px;
+
+  /* -----------------------------
+     Base
+  ------------------------------*/
+  html, body { background: var(--bg); color: var(--ink); }
+  body{
+    font-family: system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+  }
+  a{ color: var(--accent); text-decoration: none; }
+  a:hover, a:focus{ text-decoration: underline; }
+
+  /* -----------------------------
+     Layout
+  ------------------------------*/
+  .page{
+    max-width: 960px;
     margin: 0 auto;
     padding: 32px 24px 48px;
+    display: grid;
+    grid-template-columns: 2.1fr 1fr;
+    grid-template-areas:
+      "header header"
+      "main   aside";
+    column-gap: 28px;
+    row-gap: 24px;
   }
-  .header {
+
+  header{
+    grid-area: header;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 24px;
+    align-items: flex-end;
+    padding-bottom: 12px;
+    border-bottom: 4px solid var(--accent);
   }
-  .name {
-    font-size: 2.2rem;
-    font-weight: 700;
+  .main{ grid-area: main; }
+  aside{
+    grid-area: aside;
+    background: var(--sidebar-bg);
+    padding: 16px 16px 20px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+  }
+
+  /* -----------------------------
+     Header
+  ------------------------------*/
+  .name{
+    margin: 0;
+    font-size: 2.1rem;
     line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    color: var(--ink);
   }
-  .contact {
+  .role-tag{
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: var(--accent-2);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .contact-top{
     text-align: right;
     font-size: 0.95rem;
-    white-space: pre-line;
+    color: var(--muted);
+    line-height: 1.35;
   }
-  h2 {
-    font-size: 1.1rem;
+
+  /* -----------------------------
+     Sections & typography
+  ------------------------------*/
+  h2{
+    margin: 22px 0 10px;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+  h3{
+    margin: 0 0 4px;
+    font-size: 1rem;
     font-weight: 700;
-    margin: 28px 0 12px;
   }
-  .item { margin-bottom: 20px; }
-  .role { font-weight: 700; margin-bottom: 4px; }
-  .company { font-style: italic; margin-bottom: 2px; }
-  .dates { font-size: 0.95rem; margin-bottom: 6px; }
-  ul { margin: 6px 0 0 20px; padding: 0; }
-  a { color: inherit; text-decoration: underline; }
-  @media print {
-    a { text-decoration: none; }
-    .page { padding: 0.25in; }
+  .sub{
+    margin: 0 0 6px;
+    color: var(--accent-2);
+    font-style: italic;
+  }
+  .dates{
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  p{ margin: 0 0 12px; }
+  ul{ margin: 6px 0 16px 20px; padding: 0; }
+  li{ margin: 4px 0; }
+
+  /* -----------------------------
+     Sidebar bits
+  ------------------------------*/
+  .label{
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+  .stack{
+    margin: 0 0 12px;
+    list-style: none;
+    padding: 0;
+  }
+  .stack li{
+    margin: 6px 0;
+  }
+  .chips{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 12px 0;
+  }
+  .chip{
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .side-rule{
+    height: 1px;
+    background: var(--rule);
+    border: 0;
+    margin: 14px 0;
+  }
+
+  /* -----------------------------
+     Responsive & print
+  ------------------------------*/
+  @media (max-width: 800px){
+    .page{
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "aside"
+        "main";
+    }
+    .contact-top{ text-align: left; margin-top: 10px; }
+  }
+
+  @media print{
+    :root{
+      --accent: #000000;
+      --accent-2: #000000;
+      --sidebar-bg: #ffffff;
+      --rule: #000000;
+    }
+    a{ text-decoration: none; color: #000; }
+    aside{ border-color: #000; }
+    .page{ padding: 0.35in; }
   }
 </style>
 </head>
-
 <body>
-<main class="page">
+  <div class="page">
 
-  <div class="header">
-    <div class="name">
-      Alexandra M.<br>
-      Torres
+    <!-- Header -->
+    <header>
+      <div>
+        <h1 class="name">Alexandra M. Torres</h1>
+        <div class="role-tag">Sociology Student · Research & Data Analysis</div>
+      </div>
+      <div class="contact-top">
+        Chicago, IL<br/>
+        (312) 555‑0194<br/>
+        <a href="mailto:alexandra.torres23@email.com">
+          alexandra.torres23@email.com
+        </a><br/>
+        <a href="https://linkedin.com/in/alexandratorres">
+          linkedin.com/in/alexandratorres
+        </a>
+      </div>
+    </header>
+
+    <!-- Main column -->
+    <div class="main">
+      <h2>Objective</h2>
+      <p>
+        Sociology BA candidate with hands‑on research and data experience—NVivo coding, Excel and Python analysis, and clear written communication—earned across academic research and institutional reporting roles. Dean’s List honoree and recipient of the UIC Undergraduate Research Award.
+      </p>
+
+      <h2>Experience</h2>
+
+      <section>
+        <h3>Research Intern</h3>
+        <div class="sub">UIC Department of Sociology — Chicago, IL</div>
+        <div class="dates">June 2025 – August 2025</div>
+        <ul>
+          <li>Assisted faculty with qualitative research on urban community development</li>
+          <li>Coded and analyzed interview transcripts using NVivo</li>
+          <li>Summarized findings and contributed to a draft conference poster</li>
+          <li>Maintained organized datasets and documentation for future research use</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Student Data Assistant</h3>
+        <div class="sub">Office of Institutional Research, UIC</div>
+        <div class="dates">September 2024 – May 2025</div>
+        <ul>
+          <li>Cleaned and analyzed enrollment and retention data using Excel and Python</li>
+          <li>Created charts and summary tables for internal reports</li>
+          <li>Collaborated with staff analysts to ensure data accuracy and clarity</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Barista</h3>
+        <div class="sub">Lakeview Coffee Co. — Chicago, IL</div>
+        <div class="dates">May 2023 – August 2024</div>
+        <ul>
+          <li>Delivered consistent customer service in a fast‑paced environment</li>
+          <li>Trained new employees on POS systems and store procedures</li>
+          <li>Balanced cash drawer and handled daily opening and closing duties</li>
+        </ul>
+      </section>
+
+      <h2>Education</h2>
+      <section>
+        <h3>University of Illinois at Chicago — B.A. in Sociology</h3>
+        <div class="dates">Expected May 2026</div>
+        <p>
+          Minor: Data Analytics · GPA: 3.72 / 4.00 · Dean’s List (4 semesters)
+        </p>
+      </section>
+
+      <h2>Leadership</h2>
+      <section>
+        <h3>Vice President</h3>
+        <div class="sub">Sociology Student Association</div>
+        <div class="dates">August 2024 – Present</div>
+        <ul>
+          <li>Coordinated speaker events and student workshops</li>
+          <li>Managed communication with faculty advisors and campus offices</li>
+          <li>Helped increase student participation by 30% over one academic year</li>
+        </ul>
+      </section>
     </div>
 
-    <div class="contact">
-Chicago, IL
-(312) 555‑0194
-alexandra.torres23@email.com
-linkedin.com/in/alexandratorres
-    </div>
+    <!-- Sidebar -->
+    <aside>
+      <span class="label">Contact</span>
+      <ul class="stack">
+        <li>Chicago, IL</li>
+        <li><a href="tel:+13125550194">(312) 555‑0194</a></li>
+        <li><a href="mailto:alexandra.torres23@email.com">alexandra.torres23@email.com</a></li>
+        <li><a href="https://linkedin.com/in/alexandratorres">linkedin.com/in/alexandratorres</a></li>
+      </ul>
+
+      <hr class="side-rule"/>
+
+      <span class="label">Skills</span>
+      <ul class="chips">
+        <li class="chip">Excel</li>
+        <li class="chip">Python (pandas)</li>
+        <li class="chip">NVivo</li>
+        <li class="chip">Qualitative coding</li>
+        <li class="chip">Literature reviews</li>
+        <li class="chip">Survey analysis</li>
+        <li class="chip">Academic writing</li>
+        <li class="chip">Presentations</li>
+        <li class="chip">Team collaboration</li>
+      </ul>
+
+      <span class="label">Languages</span>
+      <ul class="stack">
+        <li>English (native)</li>
+        <li>Spanish (conversational)</li>
+      </ul>
+
+      <hr class="side-rule"/>
+
+      <span class="label">Honors & Awards</span>
+      <ul class="stack">
+        <li>UIC Undergraduate Research Award (2025)</li>
+        <li>Dean’s List (Fall 2023 – Spring 2025)</li>
+      </ul>
+    </aside>
+
   </div>
-
-  <p>
-Sociology BA candidate with hands‑on research and data experience—NVivo coding, Excel and Python analysis, and clear written communication—earned across academic research and institutional reporting roles. Dean’s List honoree and recipient of the UIC Undergraduate Research Award.
-  </p>
-
-  <h2>Education</h2>
-  <div class="item">
-    <div class="role">University of Illinois at Chicago — Bachelor of Arts in Sociology</div>
-    <div class="dates">May 2026</div>
-    <p>
-Minor: Data Analytics · GPA: 3.72 / 4.00 · Dean’s List (4 semesters)
-    </p>
-  </div>
-
-  <h2>Relevant Experience</h2>
-
-  <div class="item">
-    <div class="role">Research Intern</div>
-    <div class="company">UIC Department of Sociology — Chicago, IL</div>
-    <div class="dates">June 2025 – August 2025</div>
-    <ul>
-      <li>Assisted faculty with qualitative research on urban community development</li>
-      <li>Coded and analyzed interview transcripts using NVivo</li>
-      <li>Summarized findings and contributed to a draft conference poster</li>
-      <li>Maintained organized datasets and documentation for future research use</li>
-    </ul>
-  </div>
-
-  <div class="item">
-    <div class="role">Student Data Assistant</div>
-    <div class="company">Office of Institutional Research, UIC</div>
-    <div class="dates">September 2024 – May 2025</div>
-    <ul>
-      <li>Cleaned and analyzed enrollment and retention data using Excel and Python</li>
-      <li>Created charts and summary tables for internal reports</li>
-      <li>Collaborated with staff analysts to ensure data accuracy and clarity</li>
-    </ul>
-  </div>
-
-  <h2>Campus & Leadership Experience</h2>
-  <div class="item">
-    <div class="role">Vice President</div>
-    <div class="company">Sociology Student Association</div>
-    <div class="dates">August 2024 – Present</div>
-    <ul>
-      <li>Coordinated speaker events and student workshops</li>
-      <li>Managed communication with faculty advisors and campus offices</li>
-      <li>Helped increase student participation by 30% over one academic year</li>
-    </ul>
-  </div>
-
-  <h2>Work Experience</h2>
-  <div class="item">
-    <div class="role">Barista</div>
-    <div class="company">Lakeview Coffee Co. — Chicago, IL</div>
-    <div class="dates">May 2023 – August 2024</div>
-    <ul>
-      <li>Delivered consistent customer service in a fast‑paced environment</li>
-      <li>Trained new employees on POS systems and store procedures</li>
-      <li>Balanced cash drawer and handled daily opening and closing duties</li>
-    </ul>
-  </div>
-
-  <h2>Skills</h2>
-  <ul>
-    <li><strong>Data & Analysis:</strong> Excel, Python (pandas), NVivo</li>
-    <li><strong>Research:</strong> Qualitative coding, literature reviews, survey analysis</li>
-    <li><strong>Communication:</strong> Academic writing, presentations, collaborative teamwork</li>
-    <li><strong>Languages:</strong> English (native), Spanish (conversational)</li>
-  </ul>
-
-  <h2>Honors & Awards</h2>
-  <ul>
-    <li>UIC Undergraduate Research Award (2025)</li>
-    <li>Dean’s List (Fall 2023 – Spring 2025)</li>
-  </ul>
-
-</main>
 </body>
 </html>
